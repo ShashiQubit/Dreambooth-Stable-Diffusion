@@ -70,8 +70,9 @@ if __name__ == "__main__":
     model.embedding_manager.load(opt.embedding_path)
 
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-    model= torch.nn.DataParallel(model)
+    
     model = model.to(device)
+    model= torch.nn.DataParallel(model)
 
     evaluator = LDMCLIPEvaluator(device)
 
